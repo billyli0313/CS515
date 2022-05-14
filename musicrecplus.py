@@ -1,10 +1,4 @@
-'''
-Name: Abhishek Desai,Jianfei Li
-CWID: 10464843,10479299
-CS515 - Music Recommendation System
-'''
 constant_file_name = "musicrecplus.txt"
-# Written by Jianfei Li
 def main():
     """The file's main purpose. The users are loaded from the musicrecplus.txt file first, and then the user is prompted for his or her name. If the user is new, it is then asked for their preferences."""
     usermap = load_users(constant_file_name)
@@ -12,7 +6,7 @@ def main():
     if username not in usermap:
         enter_preferences(username, usermap, constant_file_name)
     menu(username, usermap)
-# Written by Jianfei Li
+
 def load_users(file_name):
     """The users and their preferences are loaded from a text document"""
     try:
@@ -29,7 +23,7 @@ def load_users(file_name):
         usermap[username] = artists
     file.close()
     return usermap
-# Written by Abhishek Desai
+
 def enter_preferences(name, usermap, file_name):
     """Gets the user's preferences and saves them. Will rewrite any user preferences in the database."""
     preferences = []
@@ -39,7 +33,7 @@ def enter_preferences(name, usermap, file_name):
         new_pref = input("Enter an artist that you like (Enter to finish):")
     preferences.sort()
     save(name, usermap, file_name, preferences)
-# Written by Abhishek Desai
+
 def save(name, usermap, file_name, prefs):
     """Users and their preferences are saved in a text document"""
     usermap[name] = prefs
@@ -52,7 +46,7 @@ def save(name, usermap, file_name, prefs):
         new_line = str(user) + ':' + ','.join(usermap[user]) + '\n'
         file.write(new_line)
     file.close
-# Written by Jianfei Li
+
 def menu(name, usermap):
     """This is a function for the program's menu. Prints the menu and then moves on to the next step based on the user's selection"""
     while True:
@@ -83,7 +77,7 @@ def menu(name, usermap):
                 break
             except:
                 break  
-# Written by Abhishek Desai
+
 def num_matches(L1, L2):
     """Returns the amount of entries that are shared across the two lists"""
     L1.sort()
@@ -99,7 +93,7 @@ def num_matches(L1, L2):
         else:
             j += 1
     return matches
-# Written by Abhishek Desai
+
 def drop_matches(L1, L2):
     """Returns a new list containing only the elements from list 2 that do not appear in list 1"""
     L1.sort()
@@ -119,7 +113,7 @@ def drop_matches(L1, L2):
         result.append(L2[j])
         j += 1
     return result
-# Written by Abhishek Desai
+
 def remove_duplicates(L):
     """Creates a new list without any duplicates"""
     new_list = []
@@ -127,7 +121,7 @@ def remove_duplicates(L):
         if i not in new_list:
             new_list.append(i)
     return new_list
-# Written by Abhishek Desai
+
 def get_recommendations(name, usermap):
     """Provides the user with a list of artist recommendations""" 
     users = usermap.keys()
@@ -153,7 +147,7 @@ def get_recommendations(name, usermap):
     rec_list = remove_duplicates(new_list)
     rec_list.sort()
     return rec_list
-# Written by Abhishek Desai
+
 def print_recommendations(recs, name):
     """Output each artist from the list of recommendations"""
     if len(recs) == 0:
@@ -161,7 +155,7 @@ def print_recommendations(recs, name):
     else:
         for artist in recs:
             print(artist)
-# Written by Jianfei Li
+
 def count_occurences(name, L):
     """Counts the number of times an artist appears in a list"""
     count = 0
@@ -169,7 +163,7 @@ def count_occurences(name, L):
         if name == artist_name:
             count += 1
     return count
-# Written by Jianfei Li
+
 def best_artists(usermap):
     """Returns the most popular artist among users"""
     all_artists = []
@@ -197,7 +191,7 @@ def best_artists(usermap):
     else: 
         for artist in best_artist:
             print(artist)
-# Written by Jianfei Li
+
 def how_popular(usermap):
     """Output the number of likes the most popular artist received"""
     all_artists = []
@@ -218,7 +212,7 @@ def how_popular(usermap):
         print('Sorry, no artists found')
     else: 
         print(top_likes)
-# Written by Jianfei Li
+
 def most_likes(usermap):
     """Output the name of the user who likes the most artists"""
     users = usermap.keys()
